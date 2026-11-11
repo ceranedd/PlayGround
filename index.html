@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#101a19" />
+  <title>Jalan Kabut — Chronicles of the Verdant Realm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <canvas id="world" aria-label="Dunia game Jalan Kabut"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Jalan Kabut">
+        <span class="brand-mark">雲</span><span><b>JALAN KABUT</b><small>CHRONICLES OF THE VERDANT REALM</small></span>
+      </a>
+      <div class="region-pill"><i></i><span>PROVINSI QINGHE</span><b>·</b><span>DAY 07</span></div>
+      <button class="icon-btn sound-btn" id="soundBtn" aria-label="Suara">♫</button>
+    </header>
+    <section class="hud-left">
+      <div class="player-card">
+        <div class="avatar">林</div>
+        <div class="player-meta"><div class="name-row"><b>Lin Yue</b><span class="rank">WANDERER</span></div><div class="school">Pengembara Tanpa Perguruan</div>
+          <div class="bars"><div class="bar hp"><span id="hpBar"></span></div><div class="bar qi"><span id="qiBar"></span></div></div>
+          <div class="bar-labels"><span>❤️ <b id="hpText">100 / 100</b></span><span>☯ <b id="qiText">60 / 60</b></span></div>
+        </div>
+      </div>
+      <div class="quest-card">
+        <div class="eyebrow"><span class="quest-dot"></span> QUEST UTAMA <span class="quest-count">01 / 03</span></div>
+        <h2>Jejak di Kabut</h2>
+        <p>Gangguan di jalur gunung</p>
+        <div class="quest-objective"><span class="check-box" id="questCheck"></span><span id="questObjective">Kalahkan bandit di jalur hutan</span><b id="questProgress">0 / 3</b></div>
+        <div class="quest-reward">REWARD <span>✦ 120</span><span>◈ 35</span></div>
+      </div>
+    </section>
+    <section class="hud-right">
+      <div class="minimap-card"><div class="mini-head"><span>PETA WILAYAH</span><button id="mapBtn">↗</button></div><canvas id="minimap" width="220" height="150"></canvas><div class="map-legend"><i class="legend-player"></i> Kamu <i class="legend-quest"></i> Misi</div></div>
+      <div class="weather-card"><span class="weather-icon">☁</span><div><b>Kabut pagi</b><small>19° · Angin dari timur</small></div><span class="weather-time" id="timeLabel">06:42</span></div>
+    </section>
+    <div class="location-label"><span class="location-line"></span><div><small>SEKARANG BERADA DI</small><b id="locationName">Jalur Cemara</b></div><span class="location-line"></span></div>
+    <div class="interaction-hint" id="interactionHint"><kbd>E</kbd><span>Bicara dengan <b>Guru Shen</b></span></div>
+    <div class="toast" id="toast"></div>
+    <div class="bottom-hud">
+      <div class="system-actions"><button class="small-action" id="mapMenuBtn"><span>▤</span> Peta <kbd>M</kbd></button><button class="small-action" id="journalBtn"><span>☷</span> Jurnal <kbd>L</kbd></button><button class="small-action" id="sectBtn"><span>✧</span> Perguruan <kbd>U</kbd></button></div>
+      <div class="controls-note"><span class="key-group"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span><span>GERAK</span><i></i><kbd>SPACE</kbd><span>DASH</span><i></i><kbd>F</kbd><span>JURUS</span></div>
+      <div class="combat-actions"><button class="skill-button" id="skillBtn"><span class="skill-icon">☯</span><span><b>Tapak Awan</b><small><kbd>F</kbd> · 18 QI</small></span><span class="cooldown" id="skillCooldown"></span></button><button class="attack-button" id="attackBtn"><span>⚔</span><small>SERANG</small><kbd>J</kbd></button><button class="dodge-button" id="dodgeBtn"><span>➤</span><small>DASH</small><kbd>SPACE</kbd></button></div>
+    </div>
+    <div class="mobile-controls"><div class="joystick" id="joystick"><span></span></div><div class="mobile-actions"><button id="mDodge">➤</button><button id="mSkill">☯</button><button id="mAttack">⚔</button></div></div>
+    <div class="combat-banner" id="combatBanner"><span>⚔</span> <b>PERTARUNGAN</b><small>— Jalur Cemara</small></div>
+    <div class="modal-backdrop" id="modalBackdrop"><section class="modal" id="modal"><button class="modal-close" id="modalClose">×</button><div class="modal-kicker">CATATAN PENGEMBARA</div><h2 id="modalTitle">Jurnal Perjalanan</h2><div id="modalContent"></div></section></div>
+    <div class="start-overlay" id="startOverlay"><div class="start-content"><div class="seal">雲</div><p class="start-kicker">CHRONICLES OF THE VERDANT REALM</p><h1>Jalan <em>Kabut</em></h1><p class="start-copy">Di antara puncak berkabut dan sumpah yang terlupakan,<br>setiap langkahmu membentuk legenda.</p><button id="startBtn">MULAI PERJALANAN <span>→</span></button><small>PROTOTIPE · BAB I: JALUR CEMARA</small></div><div class="start-hint">WASD untuk bergerak <i>·</i> J serang <i>·</i> E interaksi</div></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
